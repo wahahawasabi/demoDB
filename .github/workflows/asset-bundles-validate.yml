@@ -1,33 +1,22 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
 name: asset bundles validation
-
 on:
   push:
     branches: [ "main" ]
   # pull_request:
   #   branches: [ "main" ]
-
+env:
+  DATABRICKS_HOST: https://adb-3093429238214168.8.azuredatabricks.net
+  
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        python-version: ["3.11"]
-
     steps:
-    - uses: databricks/setup-cli@main  # use the latest version of setup-cli 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
         databricks -v  # print out the version of databricks cli
-        databricks auth login --host <workspace-url>  # log into workspace
+        databricks auth login --host {{DATABRICKS_HOST}}  # log into workspace
         databricks bundle validate
         
