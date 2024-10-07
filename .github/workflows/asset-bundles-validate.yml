@@ -3,10 +3,7 @@ on:
   push:
     branches: [ "main" ]
   # pull_request:
-  #   branches: [ "main" ]
-env:
-  DATABRICKS_HOST: https://adb-3093429238214168.8.azuredatabricks.net
-  
+  #   branches: [ "main" ]  
 jobs:
   build:
     runs-on: ubuntu-latest
