@@ -17,6 +17,6 @@ jobs:
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
         databricks -v  # print out the version of databricks cli
-        databricks auth login --host {{DATABRICKS_HOST}}  # log into workspace
+        databricks auth login --host <AZURE_DATABRICKS_HOST>  # log into workspace
         databricks bundle validate
         
