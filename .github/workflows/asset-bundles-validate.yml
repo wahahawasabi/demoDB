@@ -5,7 +5,7 @@ name: asset bundles validation
 
 on:
   push:
-    branches: [ "uat" ]
+    branches: [ "main" ]
   # pull_request:
   #   branches: [ "main" ]
 
