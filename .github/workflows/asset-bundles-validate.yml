@@ -14,6 +14,6 @@ jobs:
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
-        # databricks auth login --host <AZURE_DATABRICKS_HOST>;
+        databricks configure;
         databricks bundle init;
         
