@@ -7,7 +7,7 @@ on:
 
 
 env:
-  SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+  # SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
   DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
   host: https://adb-984752964297111.11.azuredatabricks.net/ # ${{ DATABRICKS_HOST }}
 
@@ -23,7 +23,7 @@ jobs:
         [devEnv]
         host          = $host
         client_id     = $DATABRICKS_CLIENT_ID
-        client_secret = $SECRET
+        client_secret = ${{ secrets.DATABRICKS_CLIENT_SECRET }}
         EOF
 
     - name: Install dependencies
