@@ -17,17 +17,20 @@ jobs:
     strategy:
       fail-fast: false
     steps:
+    - name: setup databrickscfg
+      run: |
+        cat <<EOF > config-file.txt
+        [<some-unique-configuration-profile-name>]
+        host          = $host
+        client_id     = $DATABRICKS_CLIENT_ID
+        client_secret = $secret
+        EOF
+
     - name: Install dependencies
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
-        # databricks configure --host $host --token --profile devenv << EOF
-        
-        echo "[devenv]
-        host          = $host
-        client_id     = $DATABRICKS_CLIENT_ID
-        client_secret = $secret" > ~/.databrickscfg
-
         cat ~/.databrickscfg
+        
         databricks clusters list -p devenv
         
