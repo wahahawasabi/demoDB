@@ -5,12 +5,6 @@ on:
   # pull_request:
   #   branches: [ "main" ]  
 
-
-env:
-  # SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
-  DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
-  host: https://adb-984752964297111.11.azuredatabricks.net/ # ${{ DATABRICKS_HOST }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,12 +12,16 @@ jobs:
       fail-fast: false
     steps:
     - name: setup databrickscfg
+      env: 
+        SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+        DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
+        host: https://adb-984752964297111.11.azuredatabricks.net/ # ${{ DATABRICKS_HOST }}
       run: |
         cat <<EOF > ~/.databrickscfg
         [devEnv]
         host          = $host
         client_id     = $DATABRICKS_CLIENT_ID
-        client_secret = ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+        client_secret = $SECRET
         EOF
 
     - name: Install dependencies
