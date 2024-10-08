@@ -29,6 +29,5 @@ jobs:
         client_secret = $secret" > ~/.databrickscfg
 
         cat ~/.databrickscfg
-        databricks auth login -p devenv
         databricks clusters list -p devenv
         
