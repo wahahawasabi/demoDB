@@ -11,7 +11,7 @@ jobs:
     env: 
         SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
         DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
-        host: https://adb-984752964297111.11.azuredatabricks.net/ # ${{ DATABRICKS_HOST }}
+        host: ${{ env.DATABRICKS_HOST }} # https://adb-984752964297111.11.azuredatabricks.net/
     steps:
     - name: setup databrickscfg
       run: |
