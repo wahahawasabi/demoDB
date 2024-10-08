@@ -21,8 +21,10 @@ jobs:
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
-        databricks configure --host $DATABRICKS_HOST --token --profile devenv << EOF
+        databricks configure --host $DATABRICKS_HOST --client_id --client_secret --profile devenv << EOF
+        $DATABRICKS_CLIENT_ID
         $DATABRICKS_CLIENT_SECRET 
         EOF
-        databricks auth login --profile devenv
+        cat ~/.databrickscfg
+        databricks clusters list -p devenv
         
