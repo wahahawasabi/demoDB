@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env: 
-        SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}  # dose30cd7dffa3ce2512d9e2a2822401b034
+        SECRET: ${{ secrets.mysecret }}  # dose30cd7dffa3ce2512d9e2a2822401b034
         DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
         host: https://adb-984752964297111.11.azuredatabricks.net/
     steps:
