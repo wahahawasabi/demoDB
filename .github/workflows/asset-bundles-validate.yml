@@ -23,7 +23,7 @@ jobs:
         [devEnv]
         host          = $host
         client_id     = $DATABRICKS_CLIENT_ID
-        client_secret = $secrets
+        client_secret = $secret
         EOF
 
     - name: Install dependencies
