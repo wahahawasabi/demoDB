@@ -7,9 +7,9 @@ on:
 
 
 env:
-    secret: dose30cd7dffa3ce2512d9e2a2822401b034 # ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+  secret: dose30cd7dffa3ce2512d9e2a2822401b034 # ${{ secrets.DATABRICKS_CLIENT_SECRET }}
 #   DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
-#   DATABRICKS_HOST: https://adb-984752964297111.11.azuredatabricks.net/ # ${{ DATABRICKS_HOST }}
+  host: https://adb-984752964297111.11.azuredatabricks.net/ # ${{ DATABRICKS_HOST }}
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
-        databricks configure --host $DATABRICKS_HOST --token --profile devenv << EOF
+        databricks configure --host $host --token --profile devenv << EOF
         $secret 
         EOF
         cat ~/.databrickscfg
