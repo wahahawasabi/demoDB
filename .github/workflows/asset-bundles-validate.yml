@@ -1,9 +1,10 @@
 name: asset bundles validation
 on:
-  push:
-    branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]  
+  # push:
+  #   branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]  
+  # todo: need to tune this to be tighter 
 
 jobs:
   build:
@@ -16,7 +17,6 @@ jobs:
     steps:
     - name: setup databrickscfg
       run: |
-        printenv
         cat <<EOF > ~/.databrickscfg
         [devEnv]
         host          = $host
@@ -29,6 +29,11 @@ jobs:
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
         cat ~/.databrickscfg
-        
-        databricks clusters list -p devEnv
+
+    # - name: validate bundle
+    #   run: |
+    #     databricks bundle validate -t {{  }}
+    # - name: deploy bundle
+    #   run: |
+      
         
