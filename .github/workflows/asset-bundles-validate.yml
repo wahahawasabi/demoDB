@@ -21,6 +21,6 @@ jobs:
       run: |
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
+        echo "I AM THE HOST: $DATABRICKS_HOST";
         databricks auth login;
-        databricks bundle init;
         
