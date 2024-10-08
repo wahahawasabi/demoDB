@@ -22,5 +22,8 @@ jobs:
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh;
         databricks -v;
         echo "I AM THE HOST: $DATABRICKS_HOST";
+        echo "-----"
+        cat ~/.databrickscfg
+        echo "-----"
         databricks auth login;
         
