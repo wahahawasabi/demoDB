@@ -19,8 +19,8 @@ jobs:
     steps:
     - name: setup databrickscfg
       run: |
-        cat <<EOF > config-file.txt
-        [<some-unique-configuration-profile-name>]
+        cat <<EOF > ~/.databrickscfg
+        [devEnv]
         host          = $host
         client_id     = $DATABRICKS_CLIENT_ID
         client_secret = $secret
@@ -32,5 +32,5 @@ jobs:
         databricks -v;
         cat ~/.databrickscfg
         
-        databricks clusters list -p devenv
+        databricks clusters list -p devEnv
         
