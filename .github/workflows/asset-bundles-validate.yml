@@ -15,6 +15,9 @@ jobs:
         DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}  #c767c4f4-8603-488e-bdfd-d3c436f2e49e 
         host: ${{ vars.DATABRICKS_HOST }}  #https://adb-984752964297111.11.azuredatabricks.net/
     steps:
+    - name: checkout latest code 
+      uses: actions/checkout@v3
+      
     - name: setup databrickscfg
       run: |
         cat <<EOF > ~/.databrickscfg
