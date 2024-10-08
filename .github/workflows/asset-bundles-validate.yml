@@ -8,14 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: AZURE_DATABRICKS  # referencing the environment variables 
+    environment: AZURE_DATABRICKS  # referencing the environment variables + secrets
     env: 
         SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}  # dose30cd7dffa3ce2512d9e2a2822401b034
-        DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
-        host: https://adb-984752964297111.11.azuredatabricks.net/
+        # DATABRICKS_CLIENT_ID: c767c4f4-8603-488e-bdfd-d3c436f2e49e # ${{ DATABRICKS_CLIENT_ID }}
+        # host: https://adb-984752964297111.11.azuredatabricks.net/
     steps:
     - name: setup databrickscfg
       run: |
+        printenv
         cat <<EOF > ~/.databrickscfg
         [devEnv]
         host          = $host
